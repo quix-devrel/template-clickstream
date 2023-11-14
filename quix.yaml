@@ -34,7 +34,7 @@ deployments:
       cpu: 200
       memory: 1000
       replicas: 1
-    desiredStatus: Running
+    desiredStatus: Stopped
     variables:
       - name: input
         inputType: InputTopic
@@ -106,7 +106,7 @@ deployments:
     state:
       enabled: true
       size: 1
-    desiredStatus: Running
+      desiredStatus: Stopped
     variables:
       - name: input
         inputType: InputTopic
@@ -154,7 +154,7 @@ deployments:
     state:
       enabled: true
       size: 1
-    desiredStatus: Running
+    desiredStatus: Stopped
     variables:
       - name: input
         inputType: InputTopic
@@ -192,7 +192,7 @@ deployments:
     publicAccess:
       enabled: true
       urlPrefix: webshop-88c72cf
-    desiredStatus: Running
+    desiredStatus: Stopped
     variables:
       - name: bearer_token
         inputType: FreeText
@@ -225,7 +225,7 @@ deployments:
     publicAccess:
       enabled: true
       urlPrefix: streamlit-dashboard
-    desiredStatus: Running
+    desiredStatus: Stopped
     variables:
       - name: redis_host
         inputType: Secret
