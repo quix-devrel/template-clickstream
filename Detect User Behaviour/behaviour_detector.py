@@ -49,16 +49,26 @@ class BehaviourDetector:
                 "next_state": "clothes_visited"
             }
         ],
-        "shoes_visited": [
+            "shoes_visited": [
+        ...
+        {
+            "condition": lambda row, current_state: row["category"] == "shoes"
+                                                    and row["productId"] != current_state["rows"][0]["productId"],
+            "next_state": "shoes_visited_2"
+        }
+        ],
+        "shoes_visited_2": [
             {
-                "condition": lambda row, current_state: row["category"] == "clothing"
-                                                        and row["productId"] != current_state["rows"][0]["productId"],
+                "condition": lambda row, current_state: row["category"] == "shoes"
+                                                        and all(row["productId"] != visited_row["productId"] for visited_row in current_state["rows"]),
+                "next_state": "shoes_visited_3"
+            }
+        ],
+        "shoes_visited_3": [
+            {
+                "condition": lambda row, current_state: row["category"] == "shoes"
+                                                        and all(row["productId"] != visited_row["productId"] for visited_row in current_state["rows"]),
                 "next_state": "offer"
-            },
-            {
-                "condition": lambda row, current_state: row["category"] == "clothing"
-                                                        and row["productId"] == current_state["rows"][0]["productId"],
-                "next_state": "clothes_visited"
             }
         ]
     }
